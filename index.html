@@ -35,15 +35,30 @@
       --gold: #D2A764;
       --red: #F16549;
       --sand: #EFEDE8;
+      --white: #FFFFFF;
     }
 
     body {
       font-family: var(--font-family);
       background-color: var(--sand);
     }
+
+    .header {
+      text-align: center;
+      background-color: var(--cyan);
+    }
+    .header > h1 {
+      color: var(--white);
+      margin: 0;
+      padding: 20px;
+      font-weight: 200;
+      font-size: 0.8rem;
+    }
   </style>
 </head>
 <body>
-  <h1>Ship it!</h1>
+  <header class="header">
+    <h1>Bench Test</h1>
+  </header>
 </body>
 </html>
