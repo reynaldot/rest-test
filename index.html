@@ -35,6 +35,7 @@
       --gold: #D2A764;
       --red: #F16549;
       --sand: #EFEDE8;
+      --sand-light: #F8F6F1;
 
       --grey-dark: #3e3f44;
       --grey-light: #ededed;
@@ -88,6 +89,10 @@
       padding: 0.8rem 1.6rem;
       text-align: left;
       background-color: var(--white);
+    }
+
+    .table tbody tr:first-child td {
+      background: linear-gradient(to bottom, var(--sand-light), var(--white));
     }
 
     /* Round all four corner table cells */
