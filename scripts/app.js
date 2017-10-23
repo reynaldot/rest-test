@@ -56,7 +56,7 @@ APP.Main = ((Transactions, Intl) => {
   };
 
   const handleError = (err) => {
-    containerEl.innerHTML = createError("We are having troubles loading your transactions.");
+    containerEl.innerHTML = createError(err.message);
   };
 
   const loadTransactions = () => {

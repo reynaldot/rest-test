@@ -3,6 +3,7 @@ APP.Transactions = (() => {
 
   const API_BASE_URL = 'http://resttest.bench.co';
   const FIRST_TRANSACTIONS_PAGE = 1;
+  const MAX_TRANSACTIONS = 100;
 
   const fetchTransactionsByPage = (page) => {
     const url = `${API_BASE_URL}/transactions/${page}.json`;
@@ -24,14 +25,19 @@ APP.Transactions = (() => {
       const fetchNextPage = (page) => {
         fetchTransactionsByPage(page)
           .then(data => handleData(data))
-          .catch(err => reject(err));
+          .catch(err => {
+            // Note additional HTTP errors could be handled here. For now we do the basics:
+            reject(new Error('An error occurred when loading your transactions.'));
+          });
       };
 
-      const handleData = (data) => {
-        transactions = transactions.concat(data.transactions);
+      const handleData = (transactionPage) => {
+        transactions = transactions.concat(transactionPage.transactions);
 
-        if (transactions.length < data.totalCount) {
-          fetchNextPage(data.page + 1);
+        if (transactions.length > MAX_TRANSACTIONS) {
+          reject(new Error('We were not able to load all your transactions.'));
+        } else if (transactions.length < transactionPage.totalCount) {
+          fetchNextPage(transactionPage.page + 1);
         } else {
           resolve(transactions);
         }
