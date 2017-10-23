@@ -59,9 +59,14 @@ APP.Main = ((Transactions, Intl) => {
     containerEl.innerHTML = createError("We are having troubles loading your transactions.");
   };
 
-  containerEl.innerHTML = createLoader("Loading Transactions");
+  const loadTransactions = () => {
+    containerEl.innerHTML = createLoader("Loading Transactions");
 
-  Transactions.fetchAllTransactions()
-    .then(transactions => handleTransactions(transactions))
-    .catch(err => handleError(err));
+    Transactions.fetchAllTransactions()
+      .then(transactions => handleTransactions(transactions))
+      .catch(err => handleError(err));
+  };
+
+  loadTransactions();
+
 })(APP.Transactions, APP.Intl);
