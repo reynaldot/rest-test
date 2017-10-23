@@ -117,7 +117,7 @@ body {
   border-bottom-right-radius: var(--corner-radius);
 }
 
-/* Highlight the hovered row */
+/* Highlight a hovered row */
 .table tbody tr:hover td {
   color: var(--cyan);
   cursor: pointer;
@@ -137,4 +137,9 @@ body {
 }
 .transactions tbody td:nth-child(odd) {
   color: var(--grey-middle);
+}
+
+/* Custom style for a default/empty message */
+.transactions tbody td:only-child {
+  text-align: center;
 }

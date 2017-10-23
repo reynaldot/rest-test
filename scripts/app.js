@@ -17,6 +17,11 @@ APP.Main = ((Transactions, Intl) => {
 
   const createTransactionsTable = (transactions = [], balance = 0) => {
     const transactionRows = transactions.map(createTransactionRow).join('');
+    const defaultMessage = `
+      <tr>
+        <td colspan="4">We couldn't find any transactions.</td>
+      </tr>
+    `;
 
     return `
       <table class="table transactions">
@@ -29,7 +34,7 @@ APP.Main = ((Transactions, Intl) => {
           </tr>
         </thead>
         <tbody>
-          ${transactionRows}
+          ${transactionRows || defaultMessage}
         </tbody>
       </table>
     `
