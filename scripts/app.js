@@ -7,14 +7,15 @@ APP.main = (() => {
         <td>${transaction.Date}</td>
         <td>${transaction.Company}</td>
         <td>${transaction.Ledger}</td>
-        <td>${transaction.Amount}</td>
+        <td>${APP.intl.numberFormatter(transaction.Amount)}</td>
       </tr>
     `;
   };
 
   const updateTable = (transactions) => {
     const totalElement = document.querySelector('.transactions th:last-child');
-    totalElement.textContent = APP.transactions.sumTransactions(transactions);
+    const balance = APP.transactions.sumTransactions(transactions);
+    totalElement.textContent = APP.intl.numberFormatter(balance);
 
     const transactionsElement = document.querySelector('.transactions > tbody');
     transactionsElement.innerHTML = transactions.map(createTransactionItem).join('');
