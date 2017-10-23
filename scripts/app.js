@@ -1,4 +1,4 @@
-APP.Main = (() => {
+APP.Main = ((Transactions, Intl) => {
   'use strict';
 
   const createTransactionItem = (transaction) => {
@@ -7,19 +7,19 @@ APP.Main = (() => {
         <td>${transaction.Date}</td>
         <td>${transaction.Company}</td>
         <td>${transaction.Ledger}</td>
-        <td>${APP.Intl.numberFormatter(transaction.Amount)}</td>
+        <td>${Intl.numberFormatter(transaction.Amount)}</td>
       </tr>
     `;
   };
 
   const updateTable = (transactions) => {
     const totalElement = document.querySelector('.transactions th:last-child');
-    const balance = APP.Transactions.sumTransactions(transactions);
-    totalElement.textContent = APP.Intl.numberFormatter(balance);
+    const balance = Transactions.sumTransactions(transactions);
+    totalElement.textContent = Intl.numberFormatter(balance);
 
     const transactionsElement = document.querySelector('.transactions > tbody');
     transactionsElement.innerHTML = transactions.map(createTransactionItem).join('');
   };
 
-  APP.Transactions.fetchAllTransactions().then(transactions => updateTable(transactions));
-})();
+  Transactions.fetchAllTransactions().then(transactions => updateTable(transactions));
+})(APP.Transactions, APP.Intl);
