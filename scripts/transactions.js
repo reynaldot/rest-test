@@ -37,7 +37,14 @@ APP.transactions = (() => {
     });
   };
 
+  const sumTransactions = (transactions = []) => {
+    return transactions.reduce((acc, next) => {
+      return acc + Number.parseFloat(next.Amount);
+    }, 0); // assume zero as the inital balance.
+  }
+
   return {
-    fetchAllTransactions
+    fetchAllTransactions,
+    sumTransactions
   };
 })();

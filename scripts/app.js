@@ -13,8 +13,11 @@ APP.main = (() => {
   };
 
   const updateTable = (transactions) => {
-    const tbody = document.querySelector('.transactions > tbody');
-    tbody.innerHTML = transactions.map(createTransactionItem).join('');
+    const totalElement = document.querySelector('.transactions th:last-child');
+    totalElement.textContent = APP.transactions.sumTransactions(transactions);
+
+    const transactionsElement = document.querySelector('.transactions > tbody');
+    transactionsElement.innerHTML = transactions.map(createTransactionItem).join('');
   };
 
   APP.transactions.fetchAllTransactions().then(transactions => updateTable(transactions));
