@@ -3,6 +3,12 @@ APP.Main = ((Transactions, Intl) => {
 
   const containerEl = document.querySelector('.container');
 
+  const createLoader = (message) => {
+    return `
+      <div class="loader">${message}...</div>
+    `;
+  };
+
   const createError = (message) => {
     return `
       <div class="error">${message}</div>
@@ -48,6 +54,8 @@ APP.Main = ((Transactions, Intl) => {
   const handleError = (err) => {
     containerEl.innerHTML = createError("We are having troubles loading your transactions.");
   };
+
+  containerEl.innerHTML = createLoader("Loading Transactions");
 
   Transactions.fetchAllTransactions()
     .then(transactions => handleTransactions(transactions))

@@ -59,12 +59,21 @@ body {
   padding: 1.6rem;
 }
 
+.loader,
 .error {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%);
   font-size: 0.8rem;
+}
+
+.loader {
+  animation: fade 1s infinite alternate;
+}
+
+@keyframes fade {
+  from { opacity: 0.25 };
 }
 
 .table {
