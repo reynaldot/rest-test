@@ -27,7 +27,7 @@ APP.Main = ((Transactions, Intl) => {
         <tr>
           <td>${transaction.Date}</td>
           <td>${transaction.Company}</td>
-          <td>${transaction.Ledger}</td>
+          <td>${transaction.Ledger || 'N/A'}</td>
           <td>${Intl.numberFormatter(transaction.Amount)}</td>
         </tr>
       `
