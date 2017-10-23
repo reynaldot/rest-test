@@ -16,12 +16,22 @@ APP.Main = ((Transactions, Intl) => {
   };
 
   const createTransactionsTable = (transactions = [], balance = 0) => {
-    const transactionRows = transactions.map(createTransactionRow).join('');
-    const defaultMessage = `
+    const emptyMessage = `
       <tr>
         <td colspan="4">We couldn't find any transactions.</td>
       </tr>
     `;
+
+    const transactionRows = transactions.map((transaction) => {
+      return `
+        <tr>
+          <td>${transaction.Date}</td>
+          <td>${transaction.Company}</td>
+          <td>${transaction.Ledger}</td>
+          <td>${Intl.numberFormatter(transaction.Amount)}</td>
+        </tr>
+      `
+    }).join('');
 
     return `
       <table class="table transactions">
@@ -34,21 +44,10 @@ APP.Main = ((Transactions, Intl) => {
           </tr>
         </thead>
         <tbody>
-          ${transactionRows || defaultMessage}
+          ${transactionRows || emptyMessage}
         </tbody>
       </table>
     `
-  };
-
-  const createTransactionRow = (transaction = {}) => {
-    return `
-      <tr>
-        <td>${transaction.Date}</td>
-        <td>${transaction.Company}</td>
-        <td>${transaction.Ledger}</td>
-        <td>${Intl.numberFormatter(transaction.Amount)}</td>
-      </tr>
-    `;
   };
 
   const handleTransactions = (transactions = []) => {
