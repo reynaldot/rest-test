@@ -3,18 +3,38 @@ APP.Main = ((Transactions, Intl) => {
 
   const containerEl = document.querySelector('.container');
 
+  /**
+   * Creates a custom loader provided an input message string.
+   *
+   * @param {string} message
+   */
   const createLoader = (message) => {
     return `
       <div class="loader">${message}...</div>
     `;
   };
 
+  /**
+   * Creates a custom error message provided an input message string.
+   *
+   * @param {string} message - The error message to be displayed.
+   *
+   * @todo: provide a "try again" button for users to recover from failure.
+   */
   const createError = (message) => {
     return `
       <div class="error">${message}</div>
     `;
   };
 
+  /**
+   * Creates a new table with transactions data.
+   *
+   * @param {Array.<Object>} transactions
+   * @param {number} balance
+   *
+   * @todo: provide a "try again" button for users to re-fetch data.
+   */
   const createTransactionsTable = (transactions = [], balance = 0) => {
     const emptyMessage = `
       <tr>
