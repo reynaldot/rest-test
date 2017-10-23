@@ -3,6 +3,12 @@ APP.Main = ((Transactions, Intl) => {
 
   const containerEl = document.querySelector('.container');
 
+  const createError = (message) => {
+    return `
+      <div class="error">${message}</div>
+    `;
+  };
+
   const createTransactionsTable = (transactions = [], balance = 0) => {
     const transactionRows = transactions.map(createTransactionRow).join('');
 
@@ -39,6 +45,11 @@ APP.Main = ((Transactions, Intl) => {
     containerEl.innerHTML = createTransactionsTable(transactions, balance);
   };
 
+  const handleError = (err) => {
+    containerEl.innerHTML = createError("We are having troubles loading your transactions.");
+  };
+
   Transactions.fetchAllTransactions()
     .then(transactions => handleTransactions(transactions))
+    .catch(err => handleError(err));
 })(APP.Transactions, APP.Intl);

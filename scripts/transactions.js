@@ -8,9 +8,13 @@ APP.Transactions = (() => {
     const url = `${API_BASE_URL}/transactions/${page}.json`;
 
     return fetch(url)
-      .then(response => response.json())
-      .then(data => data)
-      .catch(err => err);
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => data);
   };
 
   const fetchAllTransactions = () => {
