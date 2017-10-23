@@ -1,4 +1,4 @@
-APP.intl = (() => {
+APP.Intl = (() => {
   const DEFAULT_LOCALE = 'en-US';
   const DEFAULT_CURRENCY = 'USD';
 
