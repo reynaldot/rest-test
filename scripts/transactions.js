@@ -3,7 +3,7 @@ APP.Transactions = (() => {
 
   const API_BASE_URL = 'http://resttest.bench.co';
   const FIRST_TRANSACTIONS_PAGE = 1;
-  const MAX_TRANSACTIONS = 100;
+  const MAX_TRANSACTIONS_PAGE = 10;
 
   /**
    * @typedef {Object} Transaction
@@ -65,7 +65,7 @@ APP.Transactions = (() => {
       const handleData = (transactionPage) => {
         transactions = transactions.concat(transactionPage.transactions);
 
-        if (transactions.length > MAX_TRANSACTIONS) {
+        if (transactionPage.page > MAX_TRANSACTIONS_PAGE) {
           reject(new Error('We were not able to load all your transactions.'));
         } else if (transactions.length < transactionPage.totalCount) {
           fetchNextPage(transactionPage.page + 1);
