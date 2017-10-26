@@ -56,8 +56,8 @@ APP.Transactions = (() => {
       const fetchNextPage = (page) => {
         fetchTransactionsByPage(page)
           .then(data => handleData(data))
-          .catch(err => {
-            // Note additional HTTP errors could be handled here. For now we do the basics:
+          .catch(() => {
+            // Note, additional HTTP errors could be handled here. For now we do the basics:
             reject(new Error('An error occurred when loading your transactions.'));
           });
       };
@@ -88,7 +88,7 @@ APP.Transactions = (() => {
     return transactions.reduce((acc, next) => {
       return acc + Number.parseFloat(next.Amount);
     }, 0); // assume zero as the inital balance.
-  }
+  };
 
   return {
     fetchAllTransactions,

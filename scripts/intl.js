@@ -7,7 +7,7 @@ APP.Intl = (() => {
 
     return function (value) {
       return formatter.format(value);
-    }
+    };
   };
 
   return {

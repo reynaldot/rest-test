@@ -53,7 +53,7 @@ APP.Main = ((Transactions, Intl) => {
           <td>${transaction.Ledger || 'N/A'}</td>
           <td>${Intl.numberFormatter(transaction.Amount)}</td>
         </tr>
-      `
+      `;
     }).join('');
 
     return `
@@ -70,7 +70,7 @@ APP.Main = ((Transactions, Intl) => {
           ${transactionRows || emptyMessage}
         </tbody>
       </table>
-    `
+    `;
   };
 
   const handleTransactions = (transactions = []) => {
@@ -83,7 +83,7 @@ APP.Main = ((Transactions, Intl) => {
   };
 
   const loadTransactions = () => {
-    containerEl.innerHTML = createLoader("Loading Transactions");
+    containerEl.innerHTML = createLoader('Loading Transactions');
 
     Transactions.fetchAllTransactions()
       .then(transactions => handleTransactions(transactions))
