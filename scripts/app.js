@@ -51,7 +51,7 @@ APP.Main = ((Transactions, Intl) => {
           <td>${transaction.Date}</td>
           <td>${transaction.Company}</td>
           <td>${transaction.Ledger || 'N/A'}</td>
-          <td>${Intl.numberFormatter(transaction.Amount)}</td>
+          <td>${Intl.currencyFormatter(transaction.Amount)}</td>
         </tr>
       `;
     }).join('');
@@ -63,7 +63,7 @@ APP.Main = ((Transactions, Intl) => {
             <th>Date</th>
             <th>Company</th>
             <th>Account</th>
-            <th>${Intl.numberFormatter(balance)}</th>
+            <th>${Intl.currencyFormatter(balance)}</th>
           </tr>
         </thead>
         <tbody>
