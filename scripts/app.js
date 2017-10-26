@@ -7,6 +7,7 @@ APP.Main = ((Transactions, Intl) => {
    * Creates a custom loader provided an input message string.
    *
    * @param {string} message
+   * @returns {string}
    */
   const createLoader = (message) => {
     return `
@@ -18,6 +19,7 @@ APP.Main = ((Transactions, Intl) => {
    * Creates a custom error message provided an input message string.
    *
    * @param {string} message - The error message to be displayed.
+   * @returns {string}
    *
    * @todo: provide a "try again" button for users to recover from failure.
    */
@@ -32,6 +34,7 @@ APP.Main = ((Transactions, Intl) => {
    *
    * @param {Array.<Object>} transactions
    * @param {number} balance
+   * @returns {string}
    *
    * @todo: provide a "try again" button for users to re-fetch data.
    */
